@@ -1,0 +1,10 @@
+[user]
+	name = yusei-wy
+	email = yusei.kasa@gmail.com
+[core]
+	editor = code --wait
+    excludesfile = $HOME/.gitignore_global
+[pull]
+	ff = only
+[merge]
+	ff = false
