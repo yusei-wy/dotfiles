@@ -24,6 +24,10 @@ fi
 if ! [ -d $HOME/bin/gibo ]; then
     git clone https://github.com/simonwhitaker/gibo.git $HOME/bin/gibo
 fi
+mkdir -p $HOME/.tmux/plugins/tpm
+if ! [ -d $HOME/.tmux/plugins/tpm ]; then
+   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
+fi
 source $HOME/.profile
 
 
