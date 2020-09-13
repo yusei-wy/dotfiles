@@ -7,8 +7,7 @@ mkdir -p $HOME/.config/nvim
 
 for file in ${DOT_FILES[@]}
 do
-    ln -s $HOME/dotfiles/$file $HOME/$file
+    if ! [ -f $HOME/$file ]; then
+        ln -s $HOME/dotfiles/$file $HOME/$file
+    fi
 done
-
-bash -l
-echo "initialized dotfiles"

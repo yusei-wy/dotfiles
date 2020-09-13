@@ -8,18 +8,17 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# nodenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
-
-# gibo
-export PATH="$HOME/bin/gibo":"$PATH"
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# anyenv
+if [ -d $HOME/.anyenv ]; then
+    export PATH="$HOME/.anyenv/bin:$PATH"
+    eval "$(anyenv init -)"
+fi
 
 # cargo
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# gibo
+export PATH="$HOME/bin/gibo":"$PATH"
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
