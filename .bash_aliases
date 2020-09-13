@@ -1,10 +1,5 @@
 source $HOME/dotfiles/_utils.sh
 
-if existsCmd exa; then
-  alias ls='exa'
-  alias ll='exa -ahl --git'
-fi
-
 if existsCmd bat; then
   alias cat='bat'
 fi
@@ -15,18 +10,31 @@ else
   alias diff='diff -u'
 fi
 
+if existsCmd exa; then
+  alias ls='exa'
+  alias ll='exa -ahl --git'
+fi
+
+if existsCmd nvim; then
+  alias vi='nvim'
+fi
+
 
 # platforms
 getPlatform
 
 if [ "$OS" = "Linux" ]; then
-  if existsCmd trash-cli; then
-    alias rm='trash-cli'
+  if existsCmd trash-put; then
+    alias rm='trash-put'
   fi
 
   alias pbcopy='xsel --clipboard --output'
 fi
 
 if [ "$OS" = "WSL" ]; then
+  if existsCmd trash-put; then
+    alias rm='trash-put'
+  fi
+
   alias pbcopy='clip.exe'
 fi

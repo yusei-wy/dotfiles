@@ -9,10 +9,11 @@ mkdir -p $HOME/bin
 
 echo "install packages..."
 sudo apt install colordiff
+sudo apt install fonts-firacode
 sudo apt install git
 sudo apt install neovim
-sudo apt install trash-cli
 sudo apt install xsel
+sudo apt install trash-cli
 if ! existsCmd rustup; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
@@ -55,5 +56,6 @@ if ! [ -d $(pyenv root)/plugins/pyenv-virtualenv ]; then
 fi
 source $HOME/.profile
 pyenv virtualenv 3.8.1 neovim3
+
 
 echo "setup donw"
