@@ -12,8 +12,9 @@ sudo apt install colordiff
 sudo apt install fonts-firacode
 sudo apt install git
 sudo apt install neovim
-sudo apt install xsel
+sudo apt install tmux
 sudo apt install trash-cli
+sudo apt install xsel
 if ! existsCmd rustup; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
