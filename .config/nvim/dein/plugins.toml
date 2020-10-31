@@ -1,0 +1,227 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+hook_post_update = '''
+  let cmd = 'make'
+  let g:dein#plugin.build = cmd
+'''
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+# repo = 'ayu-theme/ayu-vim'
+# repo = 'joshdick/onedark.vim'
+# repo = 'freeo/vim-kalisi'
+# repo = 'w0ng/vim-hybrid'
+repo = 'morhetz/gruvbox'
+hook_add = '''
+  set background=dark
+  colorscheme gruvbox
+  " colorscheme 設定は source 後に行う必要があるので確実に読まれている VimEnter のタイミングで行う
+  " 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
+  au MyAutoCmd VimEnter * nested colorscheme gruvbox
+
+  " 背景透過
+  au MyAutoCmd VimEnter * nested highlight Normal ctermbg=NONE guibg=NONE
+  au MyAutoCmd VimEnter * nested highlight LineNr ctermbg=NONE guibg=NONE
+  au MyAutoCmd VimEnter * nested highlight SpecialKey ctermbg=None guibg=None
+  " 選択範囲
+  au MyAutoCmd VimEnter * nested highlight Visual ctermbg=Grey guibg=Grey
+'''
+
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_add = '''
+" パワーラインでかっこよく
+let g:airline_powerline_fonts = 1
+" タブバーをかっこよく
+let g:airline#extensions#tabline#enabled = 1
+" Lintツールによるエラー、警告を表示(ALEの拡張)
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#ale#error_symbol = 'E:'
+let g:airline#extensions#ale#warning_symbol = 'W:'
+'''
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+hook_add = '''
+  let g:airline_theme='onedark'
+'''
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  map <C-e> :NERDTreeToggle<CR>
+
+  " 隠しファルをデフォルト表示
+  let g:NERDTreeShowHidden = 1
+'''
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+
+[[plugins]]
+repo = 'tweekmonster/django-plus.vim'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+hook_add = '''
+  let g:go_bin_path = $GOPATH.'/bin'
+  let g:go_fmt_command = "goimports"
+  let g:go_fmt_autosave = 1
+  let g:go_highlight_build_constraints = 1
+  let g:go_highlight_extra_types = 1
+  let g:go_highlight_fields = 1
+  let g:go_highlight_functions = 1
+  let g:go_highlight_methods = 1
+  let g:go_highlight_operators = 1
+  let g:go_highlight_structs = 1
+  let g:go_highlight_types = 1
+
+  " run :GoBuild or :GoTestCompile based on the go file
+  function! s:build_go_files()
+    let l:file = expand('%')
+    if l:file =~# '^\f\+_test\.go$'
+      call go#test#Test(0, 1)
+    elseif l:file =~# '^\f\+\.go$'
+      call go#cmd#Build(0)
+    endif
+  endfunction
+
+  let g:mapleader = "\<Space>"
+  nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+  nmap <leader>r  <Plug>(go-run)
+  nmap <leader>t  <Plug>(go-test)
+  nmap <leader>c  <Plug>(go-coverage-toggle)
+  nmap <leader>i  <Plug>(go-info)
+  " テストファイルとの切り替え
+  command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+  command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+  command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+  command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+
+  " neovim だと go_fmt_autosave が動作しない
+  autocmd BufWrite *.{go} :GoFmt
+'''
+
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+
+[[plugins]]
+repo = 'AndrewRadev/splitjoin.vim'
+
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+hook_add = '''
+  set helplang=ja,en
+'''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+  " 分割画面を縦にする
+  set diffopt+=vertical
+
+  " ファイル保存時に実行
+  autocmd BufWritePost * GitGutter
+'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+
+[[plugins]]
+repo = 'lilydjwg/colorizer'
+
+[[plugins]]
+repo = 'scrooloose/nerdcommenter'
+hook_add = '''
+  " <leader>c<space> - toggle
+  " <leader>ci - 行の状態を個別に切り替え
+  " <leader>cA - 行末
+  " <leader>cs - ブロックコメント
+  let g:NERDSpaceDelims=1
+  let g:NERDDefaultAlign='left'
+'''
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+hook_add = '''
+let g:easymotion_leader_key = '\<Space>'
+'''
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'MattesGroeger/vim-bookmarks'
+
+[[plugins]] # binary editor
+repo = 'Shougo/vinarise'
+
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+hook_add = '''
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+'''
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'w0rp/ale'
+hook_add = '''
+  " エラー行に表示するマーク
+  " let g:ale_sign_error = '⨉'
+  " let g:ale_sign_warning = '⚠'
+
+  " オープン時に lint
+  let g:ale_lint_on_enter = 1
+  " 保存時に lint
+  let g:ale_lint_on_save = 1
+  " 編集中は lint しない
+  let g:ale_lint_on_text_changed = 'never'
+
+  " C/C++
+  let g:ale_c_clang_options = ''
+  let g:ale_c_gcc_options = ''
+
+  nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+  nmap <silent> <C-j> <Plug>(ale_next_wrap)
+'''
+
+[[plugins]] # 行末スペース削除
+repo = 'bronson/vim-trailing-whitespace'
+hook_add = '''
+  " autocmd BufWritePre * :FixWhitespace
+'''
+
+[[plugins]]
+repo = 'terryma/vim-multiple-cursors'
+
+[[plugins]]
+repo = 'luochen1990/rainbow'
+hook_add = '''
+  let g:rainbow_active = 1
+'''
+
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'

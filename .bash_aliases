@@ -38,3 +38,5 @@ if [ "$OS" = "WSL" ]; then
 
   alias pbcopy='clip.exe'
 fi
+
+alias random='echo $(($RANDOM % 180))'
