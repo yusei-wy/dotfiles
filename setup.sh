@@ -46,6 +46,7 @@ cargo install tokei
 echo "install anyenvs..."
 anyenv install --init
 anyenv install goenv
+anyenv install jenv
 anyenv install nodenv
 anyenv install pyenv
 source $HOME/.profile

@@ -1,3 +1,4 @@
-.config/configstore/update-notifier-npm.json
+.config/configstore
+.config/firebase
 .config/nextjs-nodejs/
 .config/yarn

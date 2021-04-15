@@ -2,7 +2,7 @@
 
 source _utils.sh
 
-DOT_FILES=(.bashrc .bash_aliases .profile .gitconfig .gitignore_global .config .tmux.conf)
+DOT_FILES=(.bashrc .bash_aliases .profile .gitconfig .gitignore_global .config .tmux.conf .tmux.linux.conf .tmux.wsl.conf)
 
 for file in ${DOT_FILES[@]}
 do

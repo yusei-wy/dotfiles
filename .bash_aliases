@@ -28,7 +28,7 @@ if [ "$OS" = "Linux" ]; then
     alias rm='trash-put'
   fi
 
-  alias pbcopy='xsel --clipboard --output'
+  alias pbcopy='xsel --clipboard --input'
 fi
 
 if [ "$OS" = "WSL" ]; then
